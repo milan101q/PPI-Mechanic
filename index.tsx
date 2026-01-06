@@ -134,7 +134,7 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm" role="banner">
       <div className="bg-slate-900 text-white text-[10px] md:text-xs py-2 px-4">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
           <div className="flex items-center gap-4">
@@ -142,21 +142,21 @@ const Header: React.FC = () => {
             <span className="hidden md:flex items-center gap-1"><Phone size={12} className="text-amber-500" /> {BUSINESS_INFO.phone}</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-amber-500 font-semibold uppercase tracking-widest text-[10px]">Specializing in European Vehicles</span>
+            <span className="text-amber-500 font-semibold uppercase tracking-widest text-[10px]">European Vehicle Specialists</span>
           </div>
         </div>
       </div>
 
-      <nav className="max-w-7xl mx-auto px-4 py-3 md:py-4 flex justify-between items-center">
+      <nav className="max-w-7xl mx-auto px-4 py-3 md:py-4 flex justify-between items-center" aria-label="Main Navigation">
         <div className="flex items-center gap-2 md:gap-3">
           <div className="bg-slate-900 p-1.5 md:p-2 rounded-lg border border-amber-500/30 shadow-md transform -rotate-6 shrink-0">
-            <Wrench className="text-amber-500 w-4 h-4 md:w-6 md:h-6" />
+            <Wrench className="text-amber-500 w-4 h-4 md:w-6 md:h-6" aria-hidden="true" />
           </div>
           <div className="flex flex-col">
             <span className="text-[7px] md:text-[9px] font-bold text-amber-600 uppercase tracking-[0.2em] leading-none mb-1">Expert Service</span>
-            <h1 className="text-[12px] sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-black text-slate-950 leading-none uppercase tracking-tighter whitespace-nowrap">
+            <div className="text-[12px] sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-black text-slate-950 leading-none uppercase tracking-tighter whitespace-nowrap brand-font">
               PRE PURCHASE INSPECTION LLC
-            </h1>
+            </div>
           </div>
         </div>
 
@@ -175,13 +175,13 @@ const Header: React.FC = () => {
           ))}
         </div>
 
-        <button className="md:hidden p-2 text-slate-600" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <button className="md:hidden p-2 text-slate-600" aria-label="Toggle Menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </nav>
 
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-slate-100 p-4 space-y-4 shadow-xl">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-slate-100 p-4 space-y-4 shadow-xl animate-in fade-in slide-in-from-top-4">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
@@ -206,7 +206,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <img 
           src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=2070" 
-          alt="Luxury European Car Engine" 
+          alt="Luxury European Car Engine Professional Detail" 
           className="w-full h-full object-cover grayscale-[0.2]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-transparent"></div>
@@ -215,13 +215,13 @@ const Hero: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 w-full grid md:grid-cols-2 items-center gap-12">
         <div className="space-y-8">
           <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full text-amber-500 text-xs font-bold uppercase tracking-widest">
-            <ShieldCheck size={14} /> Full Service Auto Repair
+            <ShieldCheck size={14} /> Certified Auto Repair Specialists
           </div>
           <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-[1.1]">
             Expert Precision for Your <span className="text-amber-500">European</span> Machine
           </h1>
           <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
-            Specialized care for BMW, Mercedes, Porsche, Audi and more. From expert diagnostics to preventative maintenance, we treat your vehicle with factory-level precision.
+            High-performance care for BMW, Mercedes, Porsche, and Audi. From expert diagnostics to master mechanical repairs in Chantilly, VA.
           </p>
           <div className="flex flex-wrap gap-4">
             <a href="https://prepurchaseinspection.co/contact/" target="_blank" rel="noopener noreferrer" className="bg-amber-500 text-slate-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-400 transition-all flex items-center gap-2 shadow-lg shadow-amber-500/20 active:scale-95">
@@ -233,17 +233,17 @@ const Hero: React.FC = () => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-8 border-t border-white/10">
             <div className="flex items-center gap-3 text-white">
-              <Award className="text-amber-500" />
+              <Award className="text-amber-500" aria-hidden="true" />
               <div>
                 <p className="text-xl font-bold">10+</p>
-                <p className="text-xs text-slate-400 uppercase font-bold tracking-tighter">Brands Expertly Serviced</p>
+                <p className="text-xs text-slate-400 uppercase font-bold tracking-tighter">Luxury Brands Serviced</p>
               </div>
             </div>
             <div className="flex items-center gap-3 text-white">
-              <Clock className="text-amber-500" />
+              <Clock className="text-amber-500" aria-hidden="true" />
               <div>
                 <p className="text-xl font-bold">9 AM - 6 PM</p>
-                <p className="text-xs text-slate-400 uppercase font-bold tracking-tighter">Mon - Sat Hours</p>
+                <p className="text-xs text-slate-400 uppercase font-bold tracking-tighter">Mon - Sat Schedule</p>
               </div>
             </div>
           </div>
@@ -254,9 +254,9 @@ const Hero: React.FC = () => {
 };
 
 const Brands: React.FC = () => (
-  <section className="py-16 bg-slate-50 border-y border-slate-200">
+  <section className="py-16 bg-slate-50 border-y border-slate-200" aria-labelledby="brands-title">
     <div className="max-w-7xl mx-auto px-4">
-      <p className="text-center text-xs font-extrabold text-slate-400 uppercase tracking-[0.3em] mb-12">Expertise Across All Major European Brands</p>
+      <h2 id="brands-title" className="text-center text-xs font-extrabold text-slate-400 uppercase tracking-[0.3em] mb-12">Expertise Across All Major European Brands</h2>
       <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-60">
         {BRANDS.map(brand => (
           <span key={brand} className="text-xl md:text-2xl font-black text-slate-900 tracking-tight italic">
@@ -273,7 +273,7 @@ const About: React.FC = () => (
     <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
       <div className="relative">
         <div className="absolute -top-6 -left-6 w-32 h-32 bg-amber-500/20 blur-3xl"></div>
-        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=1000" alt="European Auto Shop" className="rounded-3xl shadow-2xl relative z-10" />
+        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=1000" alt="Master Mechanic Working on European Engine" className="rounded-3xl shadow-2xl relative z-10" />
         <div className="absolute -bottom-10 -right-10 bg-slate-900 p-8 rounded-2xl shadow-xl z-20 border border-amber-500/30 text-center">
           <p className="text-amber-500 text-4xl font-black mb-1 italic">FAIR</p>
           <p className="text-white text-lg font-bold uppercase tracking-widest leading-none">PRICING</p>
@@ -310,21 +310,21 @@ const Services: React.FC = () => (
         <h2 className="text-4xl font-extrabold text-slate-900 mb-6">Complete European Auto Solutions</h2>
         <div className="w-20 h-1.5 bg-amber-500 mx-auto mb-6"></div>
         <p className="text-slate-600 text-lg">
-          Specializing in complex diagnostics and mechanical repairs, we offer a comprehensive range of services tailored specifically for high-performance European luxury vehicles.
+          Specializing in complex diagnostics and mechanical repairs, we offer a comprehensive range of services tailored specifically for high-performance European luxury vehicles in Chantilly.
         </p>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {SERVICES.map((service) => (
-          <div key={service.id} className="group p-8 border border-slate-100 rounded-2xl hover:border-amber-500/50 hover:shadow-xl transition-all bg-slate-50/50">
+          <article key={service.id} className="group p-8 border border-slate-100 rounded-2xl hover:border-amber-500/50 hover:shadow-xl transition-all bg-slate-50/50">
             <div className="w-14 h-14 bg-white shadow-md rounded-xl flex items-center justify-center text-amber-500 mb-6 group-hover:bg-amber-500 group-hover:text-white transition-all">
               {service.icon}
             </div>
             <h3 className="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
             <p className="text-slate-600 leading-relaxed mb-4">{service.description}</p>
             <div className="pt-4 border-t border-slate-100">
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Fair Pricing Guaranteed</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Fair & Transparent Pricing</span>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </div>
@@ -336,7 +336,7 @@ const Diagnostic: React.FC = () => (
     <div className="max-w-5xl mx-auto px-4">
       <div className="text-center mb-16">
         <div className="inline-flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-full text-slate-600 text-sm font-bold mb-6">
-          <Wrench size={16} className="text-amber-500" /> Professional Vehicle Diagnostics
+          <Wrench size={16} className="text-amber-500" aria-hidden="true" /> Professional Vehicle Evaluation
         </div>
         <h2 className="text-4xl font-extrabold text-slate-900 mb-4">Expert Diagnostic Evaluation</h2>
         <p className="text-slate-600 max-w-2xl mx-auto">Our certified technicians specialize in European vehicles and provide accurate, hands-on diagnostics to identify issues before they become costly repairs.</p>
@@ -348,7 +348,7 @@ const Diagnostic: React.FC = () => (
           <a href="https://prepurchaseinspection.co/contact/" target="_blank" rel="noopener noreferrer" className="bg-amber-500 text-slate-950 px-8 py-4 rounded-xl font-bold text-sm hover:bg-amber-400 transition-all shadow-lg">Schedule a Diagnostic Inspection</a>
         </div>
         <div className="flex items-start justify-center gap-2 mt-8 opacity-50">
-          <AlertCircle size={14} className="text-slate-500 mt-0.5" />
+          <AlertCircle size={14} className="text-slate-500 mt-0.5" aria-hidden="true" />
           <p className="text-[10px] text-slate-500 font-medium uppercase tracking-tight max-w-lg text-left">Diagnostic results are based on physical inspection and technician evaluation at our Chantilly facility.</p>
         </div>
       </div>
@@ -363,29 +363,29 @@ const Contact: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-start">
         <div className="space-y-12">
           <div>
-            <h2 className="text-4xl font-extrabold mb-6">Visit Our Shop</h2>
+            <h2 className="text-4xl font-extrabold mb-6 text-white">Visit Our Chantilly Shop</h2>
             <p className="text-slate-400 text-lg leading-relaxed">Located conveniently in the heart of Chantilly, VA, our facility is equipped with the latest diagnostic technology for European brands.</p>
           </div>
           <div className="space-y-8">
             <div className="flex gap-6">
               <div className="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center shrink-0 border border-amber-500/20"><MapPin className="text-amber-500" /></div>
               <div>
-                <h4 className="font-bold text-xl mb-1">Our Location</h4>
-                <p className="text-slate-400 leading-relaxed">{BUSINESS_INFO.address}</p>
+                <h4 className="font-bold text-xl mb-1 text-white">Our Location</h4>
+                <address className="text-slate-400 leading-relaxed not-italic">{BUSINESS_INFO.address}</address>
                 <a href={mapsUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-amber-500 text-sm font-bold mt-2 hover:underline">Get Directions <ExternalLink size={14} /></a>
               </div>
             </div>
             <div className="flex gap-6">
               <div className="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center shrink-0 border border-amber-500/20"><Phone className="text-amber-500" /></div>
               <div>
-                <h4 className="font-bold text-xl mb-1">Call Us</h4>
+                <h4 className="font-bold text-xl mb-1 text-white">Call Us Directly</h4>
                 <a href={`tel:${BUSINESS_INFO.phone.replace(/\D/g,'')}`} className="text-2xl font-black text-white hover:text-amber-500 transition-colors">{BUSINESS_INFO.phone}</a>
               </div>
             </div>
             <div className="flex gap-6">
               <div className="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center shrink-0 border border-amber-500/20"><Clock className="text-amber-500" /></div>
               <div className="flex-1">
-                <h4 className="font-bold text-xl mb-3">Service Hours</h4>
+                <h4 className="font-bold text-xl mb-3 text-white">Service Hours</h4>
                 <div className="grid grid-cols-2 gap-y-1">
                   {Object.entries(BUSINESS_INFO.hours).map(([day, hours]) => (
                     <React.Fragment key={day}>
@@ -401,7 +401,7 @@ const Contact: React.FC = () => {
         <div className="bg-slate-800 p-2 rounded-3xl shadow-2xl border border-white/5">
           <div className="w-full h-[400px] bg-slate-900 rounded-2xl relative overflow-hidden flex flex-col items-center justify-center p-8 text-center">
             <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mb-6 shadow-xl"><MapPin className="text-slate-900" size={32} /></div>
-            <h3 className="text-2xl font-extrabold text-white mb-4">Located in Chantilly, VA</h3>
+            <h3 className="text-2xl font-extrabold text-white mb-4">Mechanic Shop in Chantilly, VA</h3>
             <a href={mapsUrl} target="_blank" rel="noreferrer" className="bg-white text-slate-900 px-8 py-4 rounded-xl font-bold hover:bg-slate-100 transition-all flex items-center gap-2 group shadow-xl">Open Google Maps <ExternalLink size={20} /></a>
           </div>
         </div>
@@ -411,19 +411,19 @@ const Contact: React.FC = () => {
 };
 
 const Footer: React.FC = () => (
-  <footer className="bg-slate-950 text-white pt-20 pb-10 border-t border-white/5">
+  <footer className="bg-slate-950 text-white pt-20 pb-10 border-t border-white/5" role="contentinfo">
     <div className="max-w-7xl mx-auto px-4">
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
         <div className="space-y-6">
           <div className="flex items-center gap-3">
             <div className="bg-slate-900 p-2 rounded-xl border border-amber-500/30 shadow-md transform -rotate-6 shrink-0">
-              <Wrench className="text-amber-500 w-6 h-6" />
+              <Wrench className="text-amber-500 w-6 h-6" aria-hidden="true" />
             </div>
             <div className="flex flex-col">
               <span className="text-[9px] font-bold text-amber-500 uppercase tracking-[0.2em] leading-none mb-1">Expert Care</span>
-              <h1 className="text-xs sm:text-sm md:text-base font-black text-white leading-none uppercase tracking-tighter whitespace-nowrap">
+              <div className="text-sm md:text-base font-black text-white leading-none uppercase tracking-tighter whitespace-nowrap brand-font">
                 PRE PURCHASE INSPECTION LLC
-              </h1>
+              </div>
             </div>
           </div>
           <p className="text-slate-500 text-sm leading-relaxed">Premium specialized repair for the world's finest European automobiles. Quality, integrity, and expert precision in Chantilly, VA.</p>
@@ -432,6 +432,7 @@ const Footer: React.FC = () => (
                href="https://www.instagram.com/pre_purchase_inspection/" 
                target="_blank" 
                rel="noopener noreferrer" 
+               aria-label="Instagram Profile"
                className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-amber-500 hover:text-slate-950 transition-all"
              >
                <Instagram size={18} />
@@ -440,6 +441,7 @@ const Footer: React.FC = () => (
                href="https://www.facebook.com/people/Pre-Purchase-Inspection-LLC/61574079876227/" 
                target="_blank" 
                rel="noopener noreferrer" 
+               aria-label="Facebook Page"
                className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-amber-500 hover:text-slate-950 transition-all"
              >
                <Facebook size={18} />
@@ -447,7 +449,7 @@ const Footer: React.FC = () => (
           </div>
         </div>
         <div>
-          <h4 className="font-bold text-lg mb-6 uppercase tracking-widest text-amber-500 text-sm">Specializations</h4>
+          <h4 className="font-bold text-lg mb-6 uppercase tracking-widest text-amber-500 text-sm">Brand Specializations</h4>
           <ul className="grid grid-cols-2 gap-3 text-slate-400 text-sm">
             {BRANDS.map(brand => <li key={brand} className="hover:text-white transition-colors cursor-default">• {brand}</li>)}
           </ul>
@@ -484,7 +486,11 @@ const App: React.FC = () => {
         <Contact />
       </main>
       <Footer />
-      <a href={`tel:${BUSINESS_INFO.phone.replace(/\D/g,'')}`} className="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-amber-500 text-slate-900 rounded-full flex items-center justify-center shadow-2xl z-40">
+      <a 
+        href={`tel:${BUSINESS_INFO.phone.replace(/\D/g,'')}`} 
+        aria-label="Call Shop Now"
+        className="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-amber-500 text-slate-900 rounded-full flex items-center justify-center shadow-2xl z-40"
+      >
         <Phone size={24} />
       </a>
     </div>
