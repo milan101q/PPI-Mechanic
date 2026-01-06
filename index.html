@@ -97,6 +97,20 @@
         .wrench-icon {
             transition: transform 0.3s ease;
         }
+        
+        /* Service Card Enhancements */
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+        }
+        .icon-pulse {
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover .icon-pulse {
+            transform: scale(1.1) rotate(5deg);
+        }
     </style>
 
     <!-- Import Map for ESM -->
@@ -144,15 +158,15 @@
         };
 
         const SERVICES = [
-          { id: 'diag', title: 'Advanced Diagnostics', description: 'Expert diagnostics for BMW, Mercedes, Porsche and more using factory-level tools.', icon: <Settings className="w-6 h-6" /> },
-          { id: 'check-engine', title: 'Check Engine Light', description: 'Precision troubleshooting of fault codes and sensor malfunctions.', icon: <Search className="w-6 h-6" /> },
-          { id: 'brakes', title: 'Brake Service', description: 'Complete brake inspections, rotor surfacing, and pad replacements.', icon: <Disc className="w-6 h-6" /> },
-          { id: 'oil', title: 'Fluid & Oil Services', description: 'Premium synthetic oil changes and transmission fluid flushes.', icon: <Droplet className="w-6 h-6" /> },
-          { id: 'electrical', title: 'Electrical Systems', description: 'Specialized repairs for complex European electrical architectures.', icon: <Zap className="w-6 h-6" /> },
-          { id: 'cooling', title: 'Cooling Systems', description: 'Radiator, water pump, and thermostat replacements to prevent overheating.', icon: <Thermometer className="w-6 h-6" /> },
-          { id: 'ac', title: 'AC & Heating', description: 'Recharging and repair of climate control systems for year-round comfort.', icon: <Wind className="w-6 h-6" /> },
-          { id: 'suspension', title: 'Suspension & Steering', description: 'Control arms, bushings, and steering rack repairs for peak handling.', icon: <Gauge className="w-6 h-6" /> },
-          { id: 'battery', title: 'Battery & Charging', description: 'Testing and replacement of high-performance European batteries.', icon: <Battery className="w-6 h-6" /> }
+          { id: 'diag', title: 'Advanced Diagnostics', description: 'Expert diagnostics for BMW, Mercedes, Porsche and more using factory-level tools.', icon: <Settings className="w-8 h-8" /> },
+          { id: 'check-engine', title: 'Check Engine Light', description: 'Precision troubleshooting of fault codes and sensor malfunctions.', icon: <Search className="w-8 h-8" /> },
+          { id: 'brakes', title: 'Brake Service', description: 'Complete brake inspections, rotor surfacing, and pad replacements.', icon: <Disc className="w-8 h-8" /> },
+          { id: 'oil', title: 'Fluid & Oil Services', description: 'Premium synthetic oil changes and transmission fluid flushes.', icon: <Droplet className="w-8 h-8" /> },
+          { id: 'electrical', title: 'Electrical Systems', description: 'Specialized repairs for complex European electrical architectures.', icon: <Zap className="w-8 h-8" /> },
+          { id: 'cooling', title: 'Cooling Systems', description: 'Radiator, water pump, and thermostat replacements to prevent overheating.', icon: <Thermometer className="w-8 h-8" /> },
+          { id: 'ac', title: 'AC & Heating', description: 'Recharging and repair of climate control systems for year-round comfort.', icon: <Wind className="w-8 h-8" /> },
+          { id: 'suspension', title: 'Suspension & Steering', description: 'Control arms, bushings, and steering rack repairs for peak handling.', icon: <Gauge className="w-8 h-8" /> },
+          { id: 'battery', title: 'Battery & Charging', description: 'Testing and replacement of high-performance European batteries.', icon: <Battery className="w-8 h-8" /> }
         ];
 
         const BRANDS = ["BMW", "Mercedes-Benz", "Porsche", "Audi", "Volkswagen", "MINI", "Volvo", "Land Rover", "Jaguar", "Alfa Romeo"];
@@ -317,33 +331,66 @@
         );
 
         const Services = () => (
-          <section id="services" className="py-24 bg-white">
+          <section id="services" className="py-24 bg-slate-50/50">
             <div className="max-w-7xl mx-auto px-4 text-center">
-              <h2 className="text-4xl font-extrabold mb-6">Complete European Auto Solutions</h2>
-              <div className="w-20 h-1.5 bg-amber-500 mx-auto mb-20"></div>
+              <div className="mb-16">
+                <h2 className="text-4xl font-extrabold mb-6 text-slate-900">Elite European Auto Solutions</h2>
+                <div className="w-24 h-1.5 bg-amber-500 mx-auto rounded-full"></div>
+                <p className="mt-6 text-slate-600 max-w-2xl mx-auto">Master-level service and specialized care designed specifically for the unique engineering of European performance vehicles.</p>
+              </div>
+              
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
                 {SERVICES.map((s) => (
-                  <article key={s.id} className="p-8 border rounded-2xl bg-slate-50/50 hover:border-amber-500 transition-all">
-                    <div className="text-amber-500 mb-6">{s.icon}</div>
-                    <h3 className="text-xl font-bold mb-3">{s.title}</h3>
-                    <p className="text-slate-600 mb-4">{s.description}</p>
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Fair Pricing Guaranteed</span>
+                  <article 
+                    key={s.id} 
+                    className="service-card group relative p-8 bg-white rounded-[2rem] border border-slate-100 shadow-xl hover:shadow-2xl hover:border-amber-500/50 transition-all flex flex-col items-start overflow-hidden"
+                  >
+                    {/* Background Pattern */}
+                    <div className="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-amber-500/5 rounded-full blur-3xl group-hover:bg-amber-500/10 transition-colors"></div>
+                    
+                    {/* Icon Container */}
+                    <div className="relative z-10 p-4 bg-slate-950 text-amber-500 rounded-2xl mb-8 icon-pulse shadow-lg group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors duration-300">
+                      {s.icon}
+                    </div>
+                    
+                    <div className="relative z-10 flex-1">
+                      <h3 className="text-2xl font-black mb-4 text-slate-900 group-hover:text-amber-600 transition-colors brand-font">{s.title}</h3>
+                      <p className="text-slate-600 mb-8 leading-relaxed font-medium">{s.description}</p>
+                    </div>
+
+                    <div className="relative z-10 w-full pt-6 border-t border-slate-50 flex items-center justify-between">
+                       <span className="inline-flex items-center px-3 py-1 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-[0.15em] group-hover:bg-amber-50 group-hover:text-amber-700 transition-colors">Fair Pricing</span>
+                       <div className="text-amber-500 opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-300">
+                         <ChevronRight size={20} />
+                       </div>
+                    </div>
                   </article>
                 ))}
+              </div>
+              
+              <div className="mt-16 inline-flex items-center gap-4 bg-slate-950 text-white px-8 py-5 rounded-3xl shadow-2xl">
+                 <ShieldCheck className="text-amber-500 w-8 h-8" />
+                 <div className="text-left">
+                    <p className="font-black brand-font uppercase text-lg leading-tight">Master Mechanic Standard</p>
+                    <p className="text-slate-400 text-xs font-bold tracking-widest uppercase">Every vehicle. Every service.</p>
+                 </div>
               </div>
             </div>
           </section>
         );
 
         const Diagnostic = () => (
-          <section id="diagnostic" className="py-24 bg-slate-50">
+          <section id="diagnostic" className="py-24 bg-white">
             <div className="max-w-5xl mx-auto px-4 text-center">
               <h2 className="text-4xl font-extrabold mb-4">Expert Diagnostic Evaluation</h2>
               <p className="mb-12 text-slate-600">Identify complex issues accurately at our Chantilly facility.</p>
-              <div className="bg-slate-900 rounded-3xl p-10 text-white shadow-2xl">
-                <h3 className="text-2xl font-bold mb-4">In-Shop Diagnostic Service</h3>
-                <p className="text-slate-400 mb-8 max-w-xl mx-auto">Strange noises or warning lights? Our team uses specialized tools to evaluate your vehicle's health.</p>
-                <a href="https://prepurchaseinspection.co/contact/" target="_blank" className="bg-amber-500 text-slate-950 px-8 py-4 rounded-xl font-bold hover:bg-amber-400">Schedule Evaluation</a>
+              <div className="bg-slate-900 rounded-3xl p-10 text-white shadow-2xl relative overflow-hidden group">
+                {/* Decorative background element */}
+                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_120%,rgba(245,158,11,0.1),transparent)] pointer-events-none"></div>
+                
+                <h3 className="text-2xl font-bold mb-4 relative z-10">In-Shop Diagnostic Service</h3>
+                <p className="text-slate-400 mb-8 max-w-xl mx-auto relative z-10">Strange noises or warning lights? Our team uses specialized tools to evaluate your vehicle's health.</p>
+                <a href="https://prepurchaseinspection.co/contact/" target="_blank" className="relative z-10 inline-block bg-amber-500 text-slate-950 px-8 py-4 rounded-xl font-bold hover:bg-amber-400 transition-all active:scale-95 shadow-lg">Schedule Evaluation</a>
               </div>
             </div>
           </section>
@@ -362,7 +409,7 @@
                     <div className="flex gap-4"><Clock className="text-amber-500" /> <div className="flex-1"><h4 className="font-bold mb-2">Service Hours</h4>{Object.entries(BUSINESS_INFO.hours).map(([d, h]) => <div key={d} className="flex justify-between text-sm text-slate-400"><span>{d}</span><span>{h}</span></div>)}</div></div>
                   </div>
                 </div>
-                <div className="bg-slate-800 p-8 rounded-3xl text-center flex flex-col items-center justify-center space-y-6">
+                <div className="bg-slate-800 p-8 rounded-3xl text-center flex flex-col items-center justify-center space-y-6 border border-white/5">
                   <MapPin size={48} className="text-amber-500" />
                   <h3 className="text-2xl font-bold">Mechanic Shop in Chantilly, VA</h3>
                   <div className="flex flex-col items-center gap-4 w-full">
@@ -395,13 +442,13 @@
                   <div className="text-lg font-black text-white uppercase brand-font">PRE PURCHASE INSPECTION LLC</div>
                   <p className="text-slate-500 text-sm">Premium specialized repair in Chantilly, VA.</p>
                   <div className="flex gap-4">
-                     <a href="https://www.instagram.com/pre_purchase_inspection/" target="_blank" className="hover:text-amber-500"><Instagram size={24} /></a>
-                     <a href="https://www.facebook.com/people/Pre-Purchase-Inspection-LLC/61574079876227/" target="_blank" className="hover:text-amber-500"><Facebook size={24} /></a>
+                     <a href="https://www.instagram.com/pre_purchase_inspection/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 transition-colors"><Instagram size={24} /></a>
+                     <a href="https://www.facebook.com/people/Pre-Purchase-Inspection-LLC/61574079876227/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 transition-colors"><Facebook size={24} /></a>
                   </div>
                 </div>
                 <div><h4 className="font-bold text-amber-500 mb-6 uppercase text-sm">Specializations</h4><ul className="grid grid-cols-2 gap-2 text-slate-400 text-sm">{BRANDS.map(b => <li key={b}>• {b}</li>)}</ul></div>
               </div>
-              <div className="pt-10 text-center text-slate-600 text-[10px] uppercase font-bold tracking-widest">&copy; {new Date().getFullYear()} PRE PURCHASE INSPECTION LLC.</div>
+              <div className="pt-10 text-center text-slate-600 text-[10px] uppercase font-bold tracking-widest border-t border-white/5">&copy; {new Date().getFullYear()} PRE PURCHASE INSPECTION LLC.</div>
             </div>
           </footer>
         );
