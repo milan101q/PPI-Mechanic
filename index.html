@@ -106,7 +106,7 @@
         import { 
           Wrench, Settings, ShieldCheck, Zap, Thermometer, Disc, 
           Gauge, Search, Droplet, Battery, Wind, Phone, MapPin, 
-          Menu, X, ChevronRight, Award, Clock, ExternalLink, Instagram, Facebook, AlertCircle
+          Menu, X, ChevronRight, Award, Clock, ExternalLink, Instagram, Facebook, AlertCircle, Star
         } from 'lucide-react';
 
         // --- CONSTANTS ---
@@ -114,6 +114,7 @@
           name: "Pre Purchase Inspection LLC",
           address: "25354 Pleasant Valley Rd STE 135, Chantilly, VA 20152",
           phone: "(571) 349-6760",
+          reviewsUrl: "https://www.google.com/maps/place/Pre+Purchase+Inspection+LLC/@38.9141454,-77.4715962,17z/data=!4m8!3m7!1s0x89b641f1573b386f:0x2c7733cf271fde9c!8m2!3d38.9141454!4d-77.4715962!9m1!1b1!16s%2Fg%2F11wh35vp1r?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
           hours: {
             Monday: "9 AM – 6 PM",
             Tuesday: "9 AM – 6 PM",
@@ -154,6 +155,12 @@
         };
 
         // --- COMPONENTS ---
+        const StarRating = ({ className = "" }) => (
+          <div className={`flex gap-0.5 text-amber-400 ${className}`}>
+            {[...Array(5)].map((_, i) => <Star key={i} size={18} fill="currentColor" />)}
+          </div>
+        );
+
         const Header = () => {
           const [isMenuOpen, setIsMenuOpen] = useState(false);
           const navLinks = [
@@ -217,6 +224,21 @@
                 <div className="flex flex-wrap gap-4">
                   <a href="https://prepurchaseinspection.co/contact/" target="_blank" className="bg-amber-500 text-slate-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-400 transition-all shadow-lg active:scale-95 flex items-center gap-2">Book Service <ChevronRight size={20} /></a>
                   <a href="#" onClick={(e) => scrollToSection(e, 'services')} className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/20 transition-all active:scale-95">Our Services</a>
+                </div>
+                
+                {/* Google Review Shortcut */}
+                <div className="pt-4 flex flex-col items-start gap-3">
+                  <StarRating />
+                  <a 
+                    href={BUSINESS_INFO.reviewsUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-white hover:text-amber-400 transition-colors font-semibold bg-slate-800/50 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10"
+                  >
+                    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4 brightness-200" />
+                    <span>Reviews & Feedback</span>
+                    <ExternalLink size={14} />
+                  </a>
                 </div>
               </div>
             </div>
@@ -300,10 +322,25 @@
                     <div className="flex gap-4"><Clock className="text-amber-500" /> <div className="flex-1"><h4 className="font-bold mb-2">Service Hours</h4>{Object.entries(BUSINESS_INFO.hours).map(([d, h]) => <div key={d} className="flex justify-between text-sm text-slate-400"><span>{d}</span><span>{h}</span></div>)}</div></div>
                   </div>
                 </div>
-                <div className="bg-slate-800 p-8 rounded-3xl text-center flex flex-col items-center justify-center">
-                  <MapPin size={48} className="text-amber-500 mb-6" />
-                  <h3 className="text-2xl font-bold mb-4">Mechanic Shop in Chantilly, VA</h3>
-                  <a href={mapsUrl} target="_blank" className="bg-white text-slate-900 px-8 py-4 rounded-xl font-bold flex items-center gap-2">Open Maps <ExternalLink size={20} /></a>
+                <div className="bg-slate-800 p-8 rounded-3xl text-center flex flex-col items-center justify-center space-y-6">
+                  <MapPin size={48} className="text-amber-500" />
+                  <h3 className="text-2xl font-bold">Mechanic Shop in Chantilly, VA</h3>
+                  <div className="flex flex-col items-center gap-4 w-full">
+                    <a href={mapsUrl} target="_blank" className="w-full max-w-xs bg-white text-slate-900 px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-slate-100 transition-colors">Open Maps <ExternalLink size={20} /></a>
+                    
+                    <div className="w-full flex flex-col items-center gap-2 pt-4 border-t border-white/10">
+                      <StarRating />
+                      <a 
+                        href={BUSINESS_INFO.reviewsUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="w-full max-w-xs bg-amber-500 text-slate-950 px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-amber-400 transition-colors"
+                      >
+                        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4" />
+                        <span>Leave a Review</span>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
