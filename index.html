@@ -32,7 +32,7 @@
     <meta name="twitter:description" content="Expert European auto repair and diagnostics in Chantilly, VA. Specialized service for BMW, Mercedes, Porsche, Audi, and more.">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200">
 
-    <!-- JSON-LD Structured Data (LocalBusiness/AutoRepair) -->
+    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -80,6 +80,23 @@
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         h1, h2, h3, .brand-font { font-family: 'Montserrat', sans-serif; }
+        
+        @keyframes rotate-gear {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-gear {
+            animation: rotate-gear 12s linear infinite;
+        }
+        .logo-container:hover .animate-gear {
+            animation-duration: 4s;
+        }
+        .logo-container:hover .wrench-icon {
+            transform: rotate(-15deg) scale(1.1);
+        }
+        .wrench-icon {
+            transition: transform 0.3s ease;
+        }
     </style>
 
     <!-- Import Map for ESM -->
@@ -161,6 +178,16 @@
           </div>
         );
 
+        const DynamicLogo = () => (
+          <div className="logo-container relative group cursor-pointer flex items-center justify-center shrink-0 w-12 h-12 md:w-16 md:h-16">
+            <div className="absolute inset-0 bg-amber-500/20 rounded-xl blur-lg group-hover:bg-amber-500/40 transition-all duration-500"></div>
+            <div className="relative z-10 bg-slate-950 p-2 md:p-3 rounded-xl border border-amber-500/40 shadow-2xl flex items-center justify-center overflow-hidden w-full h-full">
+               <Settings className="absolute text-slate-800 w-10 h-10 md:w-12 md:h-12 animate-gear opacity-50" />
+               <Wrench className="text-amber-500 w-6 h-6 md:w-8 md:h-8 wrench-icon relative z-20" aria-hidden="true" />
+            </div>
+          </div>
+        );
+
         const Header = () => {
           const [isMenuOpen, setIsMenuOpen] = useState(false);
           const navLinks = [
@@ -183,27 +210,41 @@
                 </div>
               </div>
               <nav className="max-w-7xl mx-auto px-4 py-3 md:py-4 flex justify-between items-center" aria-label="Main Navigation">
-                <div className="flex items-center gap-2 md:gap-3">
-                  <div className="bg-slate-900 p-1.5 md:p-2 rounded-lg border border-amber-500/30 shadow-md transform -rotate-6 shrink-0">
-                    <Wrench className="text-amber-500 w-4 h-4 md:w-6 md:h-6" aria-hidden="true" />
-                  </div>
+                <div className="flex items-center gap-3 md:gap-5">
+                  <DynamicLogo />
                   <div className="flex flex-col">
-                    <span className="text-[7px] md:text-[9px] font-bold text-amber-600 uppercase tracking-[0.2em] leading-none mb-1">Powered By</span>
-                    <div className="text-[12px] sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-black text-slate-950 leading-none uppercase tracking-tighter brand-font">PRE PURCHASE INSPECTION LLC</div>
+                    <span className="text-[8px] md:text-[10px] font-bold text-amber-600 uppercase tracking-[0.25em] leading-none mb-1">Powered By</span>
+                    <div className="text-[14px] sm:text-base md:text-xl lg:text-2xl font-black text-slate-950 leading-none uppercase tracking-tighter brand-font">PRE PURCHASE INSPECTION LLC</div>
                   </div>
                 </div>
-                <div className="hidden md:flex items-center gap-8">
-                  {navLinks.map((link) => (
-                    <a key={link.name} href={link.href || '#'} target={link.href ? "_blank" : undefined} onClick={(e) => link.id ? scrollToSection(e, link.id) : null} className="text-sm font-semibold text-slate-600 hover:text-amber-500 transition-colors">{link.name}</a>
-                  ))}
+                
+                <div className="hidden lg:flex items-center gap-6">
+                  <div className="flex items-center gap-6 border-r border-slate-200 pr-6">
+                    {navLinks.map((link) => (
+                      <a key={link.name} href={link.href || '#'} target={link.href ? "_blank" : undefined} onClick={(e) => link.id ? scrollToSection(e, link.id) : null} className="text-sm font-bold text-slate-600 hover:text-amber-500 transition-colors">{link.name}</a>
+                    ))}
+                  </div>
+                  <a href="https://prepurchaseinspection.co/" target="_blank" rel="noopener noreferrer" className="bg-amber-500 text-slate-950 px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-amber-400 transition-all shadow-md active:scale-95 flex items-center gap-2">
+                    Pre Purchase Inspection
+                    <ExternalLink size={14} />
+                  </a>
                 </div>
-                <button className="md:hidden p-2 text-slate-600" aria-label="Toggle Menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>{isMenuOpen ? <X size={28} /> : <Menu size={28} />}</button>
+                
+                <button className="lg:hidden p-2 text-slate-600" aria-label="Toggle Menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>{isMenuOpen ? <X size={28} /> : <Menu size={28} />}</button>
               </nav>
+              
               {isMenuOpen && (
-                <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-slate-100 p-4 space-y-4 shadow-xl">
-                  {navLinks.map((link) => (
-                    <a key={link.name} href={link.href || '#'} target={link.href ? "_blank" : undefined} onClick={(e) => link.id ? scrollToSection(e, link.id, setIsMenuOpen) : null} className="block text-lg font-bold text-slate-900 hover:text-amber-500">{link.name}</a>
-                  ))}
+                <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-slate-100 p-6 space-y-6 shadow-xl animate-in slide-in-from-top duration-300">
+                  <div className="space-y-4">
+                    {navLinks.map((link) => (
+                      <a key={link.name} href={link.href || '#'} target={link.href ? "_blank" : undefined} onClick={(e) => link.id ? scrollToSection(e, link.id, setIsMenuOpen) : null} className="block text-lg font-bold text-slate-900 hover:text-amber-500">{link.name}</a>
+                    ))}
+                  </div>
+                  <div className="pt-4 border-t border-slate-100">
+                    <a href="https://prepurchaseinspection.co/" target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-amber-500 text-slate-950 px-6 py-4 rounded-xl text-lg font-bold hover:bg-amber-400 shadow-lg active:scale-95">
+                      Pre Purchase Inspection
+                    </a>
+                  </div>
                 </div>
               )}
             </header>
@@ -222,11 +263,10 @@
                 <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-[1.1]">Expert Precision for Your <span className="text-amber-500">European</span> Vehicle</h1>
                 <p className="text-lg text-slate-300 leading-relaxed max-w-lg">High-performance care for BMW, Mercedes, Porsche, and Audi. Master mechanical repairs and diagnostics in Chantilly, VA.</p>
                 <div className="flex flex-wrap gap-4">
-                  <a href="https://prepurchaseinspection.co/contact/" target="_blank" className="bg-amber-500 text-slate-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-400 transition-all shadow-lg active:scale-95 flex items-center gap-2">Book Service <ChevronRight size={20} /></a>
+                  <a href="https://prepurchaseinspection.co/contact/" target="_blank" className="bg-amber-500 text-slate-950 px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-400 transition-all shadow-lg active:scale-95 flex items-center gap-2">Book Service <ChevronRight size={20} /></a>
                   <a href="#" onClick={(e) => scrollToSection(e, 'services')} className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/20 transition-all active:scale-95">Our Services</a>
                 </div>
                 
-                {/* Google Review Shortcut */}
                 <div className="pt-4 flex flex-col items-start gap-3">
                   <StarRating />
                   <a 
