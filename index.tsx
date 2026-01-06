@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import { 
   Wrench, Settings, ShieldCheck, Zap, Thermometer, Disc, 
-  Gauge, Search, Droplet, Battery, Wind, Car, Phone, MapPin, 
+  Gauge, Search, Droplet, Battery, Wind, Phone, MapPin, 
   Menu, X, ChevronRight, Award, Clock, ExternalLink, Instagram, Facebook, AlertCircle
 } from 'lucide-react';
 
@@ -148,13 +148,13 @@ const Header: React.FC = () => {
       </div>
 
       <nav className="max-w-7xl mx-auto px-4 py-3 md:py-4 flex justify-between items-center">
-        <div className="flex items-center gap-3">
-          <div className="bg-slate-900 p-2 md:p-2.5 rounded-xl border border-amber-500/30 shadow-md transform -rotate-6">
-            <Wrench className="text-amber-500 w-5 h-5 md:w-8 md:h-8" />
+        <div className="flex items-center gap-2 md:gap-3">
+          <div className="bg-slate-900 p-1.5 md:p-2 rounded-lg border border-amber-500/30 shadow-md transform -rotate-6 shrink-0">
+            <Wrench className="text-amber-500 w-4 h-4 md:w-6 md:h-6" />
           </div>
           <div className="flex flex-col">
-            <span className="text-[8px] md:text-[10px] font-bold text-amber-600 uppercase tracking-[0.2em] leading-none mb-1">Powered By</span>
-            <h1 className="text-[10px] sm:text-sm md:text-xl lg:text-2xl font-black text-slate-950 leading-none uppercase tracking-tighter whitespace-nowrap">
+            <span className="text-[7px] md:text-[9px] font-bold text-amber-600 uppercase tracking-[0.2em] leading-none mb-1">Expert Service</span>
+            <h1 className="text-[12px] sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-black text-slate-950 leading-none uppercase tracking-tighter whitespace-nowrap">
               PRE PURCHASE INSPECTION LLC
             </h1>
           </div>
@@ -218,7 +218,7 @@ const Hero: React.FC = () => {
             <ShieldCheck size={14} /> Full Service Auto Repair
           </div>
           <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-[1.1]">
-            Expert Precision for Your <span className="text-amber-500">European</span> Vehicle
+            Expert Precision for Your <span className="text-amber-500">European</span> Machine
           </h1>
           <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
             Specialized care for BMW, Mercedes, Porsche, Audi and more. From expert diagnostics to preventative maintenance, we treat your vehicle with factory-level precision.
@@ -428,8 +428,22 @@ const Footer: React.FC = () => (
           </div>
           <p className="text-slate-500 text-sm leading-relaxed">Premium specialized repair for the world's finest European automobiles. Quality, integrity, and expert precision in Chantilly, VA.</p>
           <div className="flex gap-4">
-             <a href="#" className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-amber-500 hover:text-slate-950 transition-all"><Instagram size={18} /></a>
-             <a href="#" className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-amber-500 hover:text-slate-950 transition-all"><Facebook size={18} /></a>
+             <a 
+               href="https://www.instagram.com/pre_purchase_inspection/" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-amber-500 hover:text-slate-950 transition-all"
+             >
+               <Instagram size={18} />
+             </a>
+             <a 
+               href="https://www.facebook.com/people/Pre-Purchase-Inspection-LLC/61574079876227/" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-amber-500 hover:text-slate-950 transition-all"
+             >
+               <Facebook size={18} />
+             </a>
           </div>
         </div>
         <div>
@@ -480,6 +494,6 @@ const App: React.FC = () => {
 // --- RENDER ---
 const rootElement = document.getElementById('root');
 if (rootElement) {
-  const root = ReactDOM.createRoot(rootElement);
-  root.render(<React.StrictMode><App /></React.StrictMode>);
+  const root = createRoot(rootElement);
+  root.render(<App />);
 }
