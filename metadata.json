@@ -1,0 +1,7 @@
+{
+  "name": "Pre Purchase Inspection LLC - European Auto Experts",
+  "description": "A premium full-service auto repair website for Pre Purchase Inspection LLC in Chantilly, VA, specializing in European luxury brands like BMW, Mercedes, and Porsche.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
