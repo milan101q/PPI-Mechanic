@@ -142,20 +142,21 @@ const Header: React.FC = () => {
             <span className="hidden md:flex items-center gap-1"><Phone size={12} className="text-amber-500" /> {BUSINESS_INFO.phone}</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-amber-500 font-semibold uppercase tracking-widest">Specializing in European Vehicles</span>
+            <span className="text-amber-500 font-semibold uppercase tracking-widest text-[10px]">Specializing in European Vehicles</span>
           </div>
         </div>
       </div>
 
       <nav className="max-w-7xl mx-auto px-4 py-3 md:py-4 flex justify-between items-center">
         <div className="flex items-center gap-3">
-          <div className="bg-amber-500 p-2 rounded-lg">
-            <Car className="text-slate-900" size={24} />
+          <div className="bg-slate-900 p-2 md:p-2.5 rounded-xl border border-amber-500/30 shadow-md transform -rotate-6">
+            <Wrench className="text-amber-500 w-5 h-5 md:w-8 md:h-8" />
           </div>
           <div className="flex flex-col">
-            <span className="text-[10px] font-bold text-amber-600 uppercase tracking-[0.2em] leading-none mb-0.5">Powered by</span>
-            <h1 className="text-lg md:text-xl font-extrabold text-slate-900 leading-tight">PRE PURCHASE</h1>
-            <p className="text-[10px] md:text-xs font-bold text-slate-500 tracking-tighter -mt-1 uppercase">INSPECTION LLC</p>
+            <span className="text-[8px] md:text-[10px] font-bold text-amber-600 uppercase tracking-[0.2em] leading-none mb-1">Powered By</span>
+            <h1 className="text-[10px] sm:text-sm md:text-xl lg:text-2xl font-black text-slate-950 leading-none uppercase tracking-tighter whitespace-nowrap">
+              PRE PURCHASE INSPECTION LLC
+            </h1>
           </div>
         </div>
 
@@ -214,13 +215,13 @@ const Hero: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 w-full grid md:grid-cols-2 items-center gap-12">
         <div className="space-y-8">
           <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full text-amber-500 text-xs font-bold uppercase tracking-widest">
-            <ShieldCheck size={14} /> Powered by Pre Purchase Inspection LLC
+            <ShieldCheck size={14} /> Full Service Auto Repair
           </div>
           <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-[1.1]">
-            Expert Precision for Your <span className="text-amber-500">European</span> Machine
+            Expert Precision for Your <span className="text-amber-500">European</span> Vehicle
           </h1>
           <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
-            Full-service specialized care for BMW, Mercedes, Porsche, and Audi. From expert diagnostics to preventative maintenance, we treat your vehicle with factory-level precision.
+            Specialized care for BMW, Mercedes, Porsche, Audi and more. From expert diagnostics to preventative maintenance, we treat your vehicle with factory-level precision.
           </p>
           <div className="flex flex-wrap gap-4">
             <a href="https://prepurchaseinspection.co/contact/" target="_blank" rel="noopener noreferrer" className="bg-amber-500 text-slate-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-400 transition-all flex items-center gap-2 shadow-lg shadow-amber-500/20 active:scale-95">
@@ -282,7 +283,7 @@ const About: React.FC = () => (
         <h2 className="text-4xl font-extrabold text-slate-900">Professional Excellence for Discerning Drivers</h2>
         <div className="w-20 h-1.5 bg-amber-500"></div>
         <p className="text-lg text-slate-600 leading-relaxed">
-          Powered by Pre Purchase Inspection LLC, we understand that European vehicles require more than just basic mechanical work—they require specialized knowledge, factory-grade diagnostic tools, and an uncompromising commitment to quality.
+          At **Pre Purchase Inspection LLC**, we understand that European vehicles require more than just basic mechanical work—they require specialized knowledge, factory-grade diagnostic tools, and an uncompromising commitment to quality.
         </p>
         <p className="text-lg text-slate-600 leading-relaxed">
           Whether it's a routine oil change on your BMW, complex suspension work on your Mercedes Airmatic system, or a timing component replacement on your Audi, our master mechanics provide the expertise of a dealership at fair, competitive prices.
@@ -415,11 +416,14 @@ const Footer: React.FC = () => (
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
         <div className="space-y-6">
           <div className="flex items-center gap-3">
-            <div className="bg-amber-500 p-2 rounded-lg"><Car className="text-slate-900" size={24} /></div>
+            <div className="bg-slate-900 p-2 rounded-xl border border-amber-500/30 shadow-md transform -rotate-6 shrink-0">
+              <Wrench className="text-amber-500 w-6 h-6" />
+            </div>
             <div className="flex flex-col">
-              <span className="text-[9px] font-bold text-amber-500 uppercase tracking-[0.2em] leading-none mb-0.5">Powered by</span>
-              <h1 className="text-lg font-extrabold text-white leading-tight">PRE PURCHASE</h1>
-              <p className="text-[10px] font-bold text-slate-500 tracking-tighter -mt-1 uppercase">INSPECTION LLC</p>
+              <span className="text-[9px] font-bold text-amber-500 uppercase tracking-[0.2em] leading-none mb-1">Expert Care</span>
+              <h1 className="text-xs sm:text-sm md:text-base font-black text-white leading-none uppercase tracking-tighter whitespace-nowrap">
+                PRE PURCHASE INSPECTION LLC
+              </h1>
             </div>
           </div>
           <p className="text-slate-500 text-sm leading-relaxed">Premium specialized repair for the world's finest European automobiles. Quality, integrity, and expert precision in Chantilly, VA.</p>
@@ -445,8 +449,8 @@ const Footer: React.FC = () => (
           </ul>
         </div>
       </div>
-      <div className="pt-10 border-t border-white/5 text-center text-slate-600 text-xs font-bold uppercase tracking-[0.2em]">
-        &copy; {new Date().getFullYear()} Powered by PRE PURCHASE INSPECTION LLC. ALL RIGHTS RESERVED.
+      <div className="pt-10 border-t border-white/5 text-center text-slate-600 text-[10px] font-bold uppercase tracking-[0.2em]">
+        &copy; {new Date().getFullYear()} PRE PURCHASE INSPECTION LLC. ALL RIGHTS RESERVED.
       </div>
     </div>
   </footer>
