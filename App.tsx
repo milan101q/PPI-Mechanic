@@ -230,7 +230,7 @@ const Services = () => (
             <div className="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-amber-500/5 rounded-full blur-3xl group-hover:bg-amber-500/10 transition-colors"></div>
             
             {/* Icon Container */}
-            <div className="relative z-10 p-4 bg-amber-550 text-amber-600 rounded-2xl mb-8 icon-pulse shadow-sm group-hover:bg-amber-500 group-hover:text-white group-hover:shadow-lg transition-all duration-300">
+            <div className="relative z-10 p-4 bg-amber-500/10 text-amber-500 rounded-2xl mb-8 icon-pulse shadow-sm group-hover:bg-amber-500 group-hover:text-white group-hover:shadow-lg transition-all duration-300">
               {s.icon}
             </div>
             
